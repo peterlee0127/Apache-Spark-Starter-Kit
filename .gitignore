@@ -4,3 +4,4 @@ streams
 reports
 *.cache
 *-cache
+*.jar
