@@ -1,24 +1,16 @@
-import org.apache.spark.SparkConf
+/* SimpleApp.scala */
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
-import org.apache.spark.rdd._
+import org.apache.spark.SparkConf
 
-import java.util.Properties
-
-import org.apache.log4j.Logger
-import org.apache.log4j.Level
-import org.apache.spark.Logging
-import org.apache.spark.storage.StorageLevel
-
-object FoodStoreALS {
-
+object SimpleApp {
   def main(args: Array[String]) {
-  
-  val textFile = spark.textFile("hdfs://...")
-  val counts = textFile.flatMap(line => line.split(" "))
-                   .map(word => (word, 1))
-                   .reduceByKey(_ + _)
-  counts.saveAsTextFile("hdfs://...")
-  
+    val logFile = "README.md" // Should be some file on your system
+    val conf = new SparkConf().setAppName("Simple Application")
+    val sc = new SparkContext(conf)
+    val logData = sc.textFile(logFile, 2).cache()
+    val numAs = logData.filter(line => line.contains("a")).count()
+    val numBs = logData.filter(line => line.contains("b")).count()
+    println("Lines with a: %s, Lines with b: %s".format(numAs, numBs))
   }
 }
