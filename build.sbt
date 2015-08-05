@@ -3,10 +3,10 @@ name := "SparkMain"
 
 version := "0.2"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.9.4"
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "1.4.0"
+  "org.apache.spark" %% "spark-core" % "1.4.1"
 )
 
 assemblySettings
