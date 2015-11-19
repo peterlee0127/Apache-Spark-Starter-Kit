@@ -1,7 +1,6 @@
 # Spark-SBT
 <h3>sbt for Apache Spark</h3>
-	./build.sh
-	
+
 <h3>Config</h3>
 	version="0.2"  // your application version
 	scalaVersion="2.10"
@@ -9,8 +8,12 @@
 	jarPath=$filePath/target/scala-$scalaVersion/SparkMain-assembly-$version.jar 
 	Class="SimpleApp"  // Set your Class 
 	master=master	// master path
+
+<h3>Build</h3>
+	./build.sh
 	
-<h2>Deploy Script</h2>
+	
+<h3>Deploy</h3>
 <h4>Local Mode</h4>
 	./startSpark.sh local
 <h4>Mesos Mode</h4>
