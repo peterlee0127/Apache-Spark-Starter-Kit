@@ -6,7 +6,6 @@ scalaVersion="2.10"
 filePath="$PWD"
 jarPath=$filePath/target/scala-$scalaVersion/SparkMain-assembly-$version.jar
 Class="SimpleApp"
-
 master=master
 
 
