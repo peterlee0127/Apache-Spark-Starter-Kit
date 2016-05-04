@@ -8,11 +8,14 @@ object SimpleApp {
     val logFile = "README.md" // Should be some file on your system
     val conf = new SparkConf().setAppName("Simple Application")
     val sc = new SparkContext(conf)
-//    val logData = sc.textFile(logFile, 2).cache()
-    val files = sc.addFile("https://raw.githubusercontent.com/peterlee0127/iBeacon_AutoCheckIn/master/README.md")
-    val logData = sc.textFile("README.md")
-    val numAs = logData.filter(line => line.contains("iOS")).count()
-    val numBs = logData.filter(line => line.contains("b")).count()
-    println("Lines with iOS: %s, Lines with b: %s".format(numAs, numBs))
+    
+    val logData = sc.textFile("wordcount.txt")
+    
+    val counts = logData.flatMap(line => line.split(" "))
+                    .map(word => (word, 1))
+                    .reduceByKey(_ + _)
+                    .sortByKey()
+    counts.collect().foreach(a => println(a))
+
   }
 }
