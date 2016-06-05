@@ -1,15 +1,27 @@
 # Spark-SBT
-<h3>sbt for Apache Spark</h3>
+<h3>Starter-kit for Apache Spark</h3>
 
 <h2>Requirement</h2>
+
+<a herf="http://www.scala-sbt.org/download.html">Install SBT</a>
+
+<a herf="http://www.scala-lang.org/download/">Install Scala</a>
+
+<a herf="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Install JDK</a>
+
+<a herf="http://spark.apache.org/downloads.html">Install Spark</a>
+
 
 	for Spark 1.6.1 and lower, please install scala 2.10 first.
 
     for Spark 2.0 and later, please install scala 2.11 first.
     
     And install sbt first.
-<hr>
+    
+   
 
+
+<hr>
 
 <h3>Config</h3>
 	version="0.2"  // your application version
