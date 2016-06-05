@@ -3,13 +3,13 @@
 
 <h2>Requirement</h2>
 
-<a herf="http://www.scala-sbt.org/download.html">Install SBT</a>
+[Install SBT](http://www.scala-sbt.org/download.html)
 
-<a herf="http://www.scala-lang.org/download/">Install Scala</a>
+[Install Scala](http://www.scala-lang.org/download/)
 
-<a herf="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Install JDK</a>
+[Install JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html")
 
-<a herf="http://spark.apache.org/downloads.html">Install Spark</a>
+[Install Spark](http://spark.apache.org/downloads.html")
 
 
 	for Spark 1.6.1 and lower, please install scala 2.10 first.
