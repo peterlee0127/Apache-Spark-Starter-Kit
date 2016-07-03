@@ -1,2 +1,6 @@
 language: scala
-scala: 2.10.6
+jdk: oraclejdk8
+sudo: false
+scala: 2.11.8
+script:
+    - Scala/build.sh
