@@ -7,7 +7,8 @@ object SimpleApp {
   def main(args: Array[String]) {
     val conf = new SparkConf().setAppName("Simple Application")
     val sc = new SparkContext(conf)
-    val wordFile = "./../README.md"
+    val filePath = "./../README.md"
+    var wordFile = sc.textFile(filePath)
     val counts = wordFile.flatMap(line => line.split(" "))
                     .map(word => (word, 1))
                     .reduceByKey(_ + _)
