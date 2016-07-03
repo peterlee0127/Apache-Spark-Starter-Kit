@@ -5,3 +5,4 @@ reports
 *.cache
 *-cache
 *.jar
+.ropeproject
