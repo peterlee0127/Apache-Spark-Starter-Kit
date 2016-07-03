@@ -1,7 +1,7 @@
 #! /bin/sh
 
 version="0.2"
-scalaVersion="2.10"
+scalaVersion="2.11"
 
 filePath="$PWD"
 jarPath=$filePath/target/scala-$scalaVersion/SparkMain-assembly-$version.jar
