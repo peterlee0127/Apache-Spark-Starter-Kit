@@ -16,13 +16,6 @@ RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
     ln -s "${SCALA_HOME}/bin/"* "/usr/bin/" && \
     apk del .build-dependencies
 
-RUN wget http://d3kbcqa49mib13.cloudfront.net/${SPARK_VERSION}.tgz
-RUN tar xf ${SPARK_VERSION}.tgz
-RUN rm ${SPARK_VERSION}.tgz
-RUN mv ${SPARK_VERSION} spark
-ENV PATH ${PATH}:/spark/bin
-ENV PATH ${PATH}:/spark/sbin
-
 ENV SBT_VERSION 0.13.11
 ENV SBT_HOME /usr/local/sbt
 ENV PATH ${PATH}:${SBT_HOME}/bin
@@ -30,3 +23,15 @@ ENV PATH ${PATH}:${SBT_HOME}/bin
 # Install sbt
 RUN curl -sL "http://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz" | gunzip | tar -x -C /usr/local && \
     echo -ne "- with sbt $SBT_VERSION\n" >> /root/.built
+RUN sbt
+
+RUN adduser -S spark
+RUN cd /home/spark
+RUN wget http://d3kbcqa49mib13.cloudfront.net/${SPARK_VERSION}.tgz
+RUN tar xf ${SPARK_VERSION}.tgz
+RUN rm ${SPARK_VERSION}.tgz
+RUN mv ${SPARK_VERSION} spark
+ENV PATH ${PATH}:/spark/bin
+ENV PATH ${PATH}:/spark/sbin
+USER spark
+WORKDIR /home/spark
