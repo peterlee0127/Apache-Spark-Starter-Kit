@@ -1,6 +1,8 @@
 FROM alpine:3.3
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.3/main" >> /etc/apk/repositories
+RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN apk update
-RUN apk add tar openjdk8-jre openjdk8 vim python curl git
+RUN apk add tar openjdk8-jre openjdk8 vim python curl git py-numpy@testing py-pip
 ENV SCALA_VERSION=2.11.8 \
     SCALA_HOME=/usr/share/scala \
     SPARK_VERSION=spark-2.0.0-preview-bin-hadoop2.7
