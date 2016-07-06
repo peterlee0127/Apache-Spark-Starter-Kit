@@ -6,3 +6,4 @@ reports
 *-cache
 *.jar
 .ropeproject
+rooms-*.json
