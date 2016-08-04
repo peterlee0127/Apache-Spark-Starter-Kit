@@ -5,7 +5,7 @@ RUN apk update
 RUN apk add tar openjdk8-jre openjdk8 vim python curl git py-numpy@testing py-pip
 ENV SCALA_VERSION=2.11.8 \
     SCALA_HOME=/usr/share/scala \
-    SPARK_VERSION=spark-2.0.0-preview-bin-hadoop2.7
+    SPARK_VERSION=spark-2.0.0-bin-hadoop2.7
 
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
     apk add --no-cache bash && \
