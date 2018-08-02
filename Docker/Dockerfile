@@ -5,7 +5,9 @@ RUN apk update
 RUN apk add tar openjdk8-jre openjdk8 vim python curl git py-numpy@testing py-pip
 ENV SCALA_VERSION=2.11.8 \
     SCALA_HOME=/usr/share/scala \
-    SPARK_VERSION=spark-2.1.0-bin-hadoop2.7
+    SPARK_VERSION=spark-2.3.1 
+ENV SPARK_TAR=${SPARK_VERSION}-bin-hadoop2.7 
+
 
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
     apk add --no-cache bash && \
@@ -25,14 +27,14 @@ ENV PATH ${PATH}:${SBT_HOME}/bin
 # Install sbt
 RUN curl -sL "http://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz" | gunzip | tar -x -C /usr/local && \
     echo -ne "- with sbt $SBT_VERSION\n" >> /root/.built
-RUN sbt
+RUN sbt -v
 
 RUN adduser -S spark
 RUN cd /home/spark
-RUN wget http://d3kbcqa49mib13.cloudfront.net/${SPARK_VERSION}.tgz
-RUN tar xf ${SPARK_VERSION}.tgz
-RUN rm ${SPARK_VERSION}.tgz
-RUN mv ${SPARK_VERSION} spark
+RUN wget "http://www-us.apache.org/dist/spark/${SPARK_VERSION}/${SPARK_TAR}.tgz"
+RUN tar xf ${SPARK_TAR}.tgz
+RUN rm ${SPARK_TAR}.tgz
+RUN mv ${SPARK_TAR} spark
 ENV PATH ${PATH}:/spark/bin
 ENV PATH ${PATH}:/spark/sbin
 USER spark
